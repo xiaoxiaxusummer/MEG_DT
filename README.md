@@ -26,5 +26,5 @@ For MEG model training, we utilize a filtered [`laion-coco dataset`](https://hug
 :blue_heart: [**#TODO**] We will make our training datasets online available soon.
 
 # Citation
-If you find the code useful for your research, please consider citing
+:heart: If you find the code useful for your research, please consider citing
 > X. Xu, R. Zhong, X. Mu, Y. Liu, and K. Huang, ``Mobile Edge Generation-Enabled Digital Twin: Architecture Design and Research Opportunities'', IEEE Communications Magazine, accepted, Oct. 2024.
