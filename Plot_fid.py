@@ -1,8 +1,9 @@
 
 import numpy as np
 import torchvision
-import os
+import os, sys
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+project_dir = os.path.abspath(os.path.dirname(__file__))
 
 import torch
 _ = torch.manual_seed(123)
@@ -31,7 +32,7 @@ def Load_Imgs(img_files):
         imgs.append(torchvision.io.read_image(p))
     return torch.stack(imgs, 0)
 
-def main(SNR_list, save_img_path='/homes/xx623/demo/JSCC/'):
+def main(SNR_list, save_img_path=project_dir+'/result/test/generated_images/'):
     FID_results = []
     for snr in SNR_list:
         img_files = [
