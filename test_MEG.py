@@ -88,7 +88,7 @@ def test_MEG(pipe, prompt_list, SNR_dB, num_img, cal_FID=False):
         pipe: Stable diffusion pipeline to perform
         prompt_list: A list of text prompt requests
         SNR_dB: Test SNR
-        num_img: 
+        num_img: Number of samples generated for each prompt 
     """
     sdxl_results = []
     CG_results = []
@@ -125,7 +125,7 @@ def test_MEG(pipe, prompt_list, SNR_dB, num_img, cal_FID=False):
             if cal_FID:
                 for i in range(num_img):
                     img_name = f"prompt_{p_id}_{i}_SNR_{SNR_dB}_step_{cfg_sdxl['num_diffusion_step']}_cfg_{cfg_int}_{cfg_float}.png"
-                    torchvision.utils.save_image(torchvision.utils.make_grid(torch.stack((CG_pred[i], split_pred[i], JSCC_pred[i]), 0), nrow = 1), os.path.join(args.save_img_path, "Collect_"+img_name))
+                    torchvision.utils.save_image(torchvision.utils.make_grid(torch.stack((CG_pred[i], split_pred[i], JSCC_pred[i]), 0), nrow = 1), os.path.join(args.save_img_path, "All_"+img_name))
                     torchvision.utils.save_image(sdxl_image[i], os.path.join(args.save_img_path, "Perfect_"+img_name))
                     torchvision.utils.save_image(CG_pred[i], os.path.join(args.save_img_path, "CG_"+img_name))
                     torchvision.utils.save_image(split_pred[i], os.path.join(args.save_img_path, "Split_"+img_name))
