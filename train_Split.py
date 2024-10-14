@@ -63,7 +63,7 @@ parser.add_argument('--threshold', type=float, default=1e-2)
 parser.add_argument('--decay_step', type=int, default=60)
 parser.add_argument('--test', type=int, default=0)
 parser.add_argument('--channel_noise', type=float, default = 0.1)
-parser.add_argument('--save_dir', type=str, default = project_dir + '/assets/JSCC_split_fenetune/')
+parser.add_argument('--save_dir', type=str, default = project_dir + '/assets/JSCC_split_finetune/')
 parser.add_argument('--resume_vae', type=bool, default = True)
 parser.add_argument('--dtype', type=torch.dtype, default = torch.float32)
 
@@ -73,7 +73,7 @@ Path(args.save_dir).mkdir(parents=True, exist_ok=True)
 
 # ==========================     Dataset Loading      ==========================
 train_dataset, test_dataset = get_dataset_loader(multi_diffusion_step=True)
-test_img_path = f'demo/pr_sdxl_ddiff_comm/JSCC_split_fenetune/'
+test_img_path = project_dir + f'/result/train/generated_images/JSCC_split_finetune/'
 Path(test_img_path).mkdir(parents=True, exist_ok=True) 
 
 # ========================== configure training and optimizer ========================
@@ -88,8 +88,7 @@ vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype
 Split_Model.post_quant_conv.load_state_dict(vae.post_quant_conv.state_dict())
 decoder_state_dict = torch.load(os.path.join(project_dir,'assets/decoder_model/LAIONCOCO_ckpt_299_model.pth'))
 Split_Model.decoder.load_state_dict(decoder_state_dict['decoder'])
-# del decoder_state_dict
-del vae
+del decoder_state_dict, vae
 
 if not args.resume_vae:
     start_epoch = 0

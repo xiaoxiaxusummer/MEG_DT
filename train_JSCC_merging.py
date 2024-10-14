@@ -73,7 +73,7 @@ Path(args.save_dir).mkdir(parents=True, exist_ok=True)
 
 # ==========================     Dataset Loading      ==========================
 train_dataset, test_dataset = get_dataset_loader(multi_diffusion_step=True)
-test_img_path = f'demo/pr_sdxl_ddiff_comm/JSCC_merging/'
+test_img_path = project_dir + f'/result/train/generated_images/JSCC_merging/'
 Path(test_img_path).mkdir(parents=True, exist_ok=True) 
 
 # ==========================     Configuration        ==========================
