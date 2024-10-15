@@ -2,7 +2,7 @@ import numpy as np
 from dataclasses import asdict
 
 import os, sys
-project_dir = os.path.abspath(os.path.dirname(__file__)) # 当前文件所在目录
+project_dir = os.path.abspath(os.path.dirname(__file__))
 print(project_dir)
 sys.path.append(project_dir)
 
