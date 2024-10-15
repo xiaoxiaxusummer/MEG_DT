@@ -17,8 +17,8 @@ from diffusers import AutoencoderKL
 from scheduler_perflow import PeRFlowScheduler
 
 import feature_merging_utils as fm
-from JSCC_merging import JSCCMergingNet, SplitModel, AWGN
-from Plot_fid import Calculate_FID,  Load_Imgs
+from MEG_Net import JSCCMergingNet, SplitModel, AWGN
+from Plot_fid import Calculate_FID,  Load_Imgs, plot_FID_score
 
 
 torch.cuda.set_device(0)
@@ -177,6 +177,5 @@ if __name__=='__main__':
 
     FID_results = np.array(FID_results)
     print(FID_results)
-    from JSCC_plot import plot_FID_score
     plot_FID_score(SNR_list, FID_results)
 
