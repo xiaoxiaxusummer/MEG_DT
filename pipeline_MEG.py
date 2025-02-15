@@ -1174,7 +1174,7 @@ class StableDiffusionXLMEGPipeline(
                     added_cond_kwargs=added_cond_kwargs,
                     return_dict=True,
                 )[0]
-                noise_pred = noise_pred_info['sample']
+                noise_pred = noise_pred_info # ['sample']
 
                 # perform guidance
                 if self.do_classifier_free_guidance:
